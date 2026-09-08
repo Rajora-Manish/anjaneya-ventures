@@ -773,5 +773,23 @@
     });
   </script>
 
+  <!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCYakIx2ym0EdcdKRzjz9UPjXZG99-v4fc",
+    authDomain: "anjaneya-ventures.firebaseapp.com",
+    projectId: "anjaneya-ventures",
+    storageBucket: "anjaneya-ventures.firebasestorage.app",
+    messagingSenderId: "738196949428",
+    appId: "1:738196949428:web:e65ad991a83cf754c34ae1"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+</script>
+
 </body>
 </html>
