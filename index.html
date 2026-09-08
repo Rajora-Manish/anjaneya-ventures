@@ -15,6 +15,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
@@ -32,92 +33,18 @@
       --gray: #aaa;
     }
 
+
     /* =========================
-       LAUNCH ANNOUNCEMENT BANNER
+       NAVBAR
     ========================= */
 
-    .launch-announcement {
-      background:
-        radial-gradient(circle at center, rgba(212,175,55,0.14), transparent 55%),
-        linear-gradient(135deg, #080808, #16120a, #080808);
-      border-bottom: 1px solid rgba(212,175,55,0.35);
-      padding: 20px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .launch-announcement::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--gold),
-        transparent
-      );
-      animation: shine 4s linear infinite;
-    }
-
-    @keyframes shine {
-      0% {
-        left: -100%;
-      }
-      100% {
-        left: 100%;
-      }
-    }
-
-    .launch-label {
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 4px;
-      margin-bottom: 5px;
-    }
-
-    .launch-announcement h2 {
-      font-size: clamp(22px, 4vw, 34px);
-      letter-spacing: 3px;
-      margin: 2px 0 5px;
-    }
-
-    .launch-announcement p {
-      max-width: 650px;
-      margin: auto;
-      color: #aaa;
-      font-size: 14px;
-    }
-
-    .launch-date {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 7px 18px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
-
-    .launch-announcement > span:last-child {
-      display: block;
-      margin-top: 7px;
-      color: #666;
-      font-size: 11px;
-    }
-
-    /* NAVBAR */
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(8, 8, 8, 0.92);
+      background: rgba(8, 8, 8, 0.96);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid #222;
     }
@@ -164,18 +91,136 @@
       cursor: pointer;
     }
 
-    /* HERO */
+
+    /* =========================
+       LAUNCH / COMING SOON
+    ========================= */
+
+    .launch-wrapper {
+      padding-top: 65px;
+      background: #080808;
+    }
+
+    .launch-announcement {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 28px 20px 25px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(212,175,55,0.16),
+          transparent 55%
+        ),
+        linear-gradient(
+          135deg,
+          #080808,
+          #171309,
+          #080808
+        );
+
+      border-bottom: 1px solid rgba(212,175,55,0.35);
+    }
+
+    .launch-announcement::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+      );
+
+      animation: launchShine 4s linear infinite;
+    }
+
+    @keyframes launchShine {
+      0% {
+        left: -100%;
+      }
+
+      100% {
+        left: 100%;
+      }
+    }
+
+    .launch-label {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .launch-announcement h2 {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 5px;
+    }
+
+    .launch-announcement p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .launch-date {
+      display: inline-block;
+      margin-top: 13px;
+      padding: 7px 20px;
+
+      border: 1px solid var(--gold);
+      color: var(--gold);
+
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .launch-announcement span {
+      display: block;
+      margin-top: 7px;
+      color: #777;
+      font-size: 11px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
     .hero {
       min-height: 100vh;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       text-align: center;
-      padding: 120px 20px 80px;
+
+      padding: 100px 20px 80px;
 
       background:
-        radial-gradient(circle at center, rgba(212,175,55,0.15), transparent 35%),
-        linear-gradient(135deg, #050505, #151515);
+        radial-gradient(
+          circle at center,
+          rgba(212,175,55,0.15),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #050505,
+          #151515
+        );
     }
 
     .hero-content {
@@ -214,8 +259,14 @@
       font-size: 17px;
     }
 
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
     .buttons {
       margin-top: 35px;
+
       display: flex;
       justify-content: center;
       gap: 15px;
@@ -224,12 +275,17 @@
 
     .btn {
       display: inline-block;
+
       padding: 14px 28px;
+
       text-decoration: none;
       text-transform: uppercase;
+
       letter-spacing: 1px;
       font-weight: bold;
+
       border: 1px solid var(--gold);
+
       transition: 0.3s;
     }
 
@@ -252,7 +308,11 @@
       color: #000;
     }
 
-    /* GENERAL */
+
+    /* =========================
+       GENERAL
+    ========================= */
+
     section {
       padding: 90px 20px;
     }
@@ -279,7 +339,11 @@
       margin-top: 8px;
     }
 
-    /* STORY */
+
+    /* =========================
+       STORY
+    ========================= */
+
     .story {
       background: #0d0d0d;
     }
@@ -301,7 +365,11 @@
       font-weight: bold;
     }
 
-    /* PHILOSOPHY */
+
+    /* =========================
+       PHILOSOPHY
+    ========================= */
+
     .philosophy-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -310,9 +378,13 @@
 
     .philosophy-card {
       background: var(--card);
+
       border: 1px solid #222;
+
       padding: 35px 20px;
+
       text-align: center;
+
       transition: 0.3s;
     }
 
@@ -336,7 +408,11 @@
       font-size: 14px;
     }
 
-    /* COLLECTIONS */
+
+    /* =========================
+       COLLECTIONS
+    ========================= */
+
     .collections {
       background: #0d0d0d;
     }
@@ -349,771 +425,19 @@
 
     .collection {
       min-height: 330px;
+
       display: flex;
       align-items: flex-end;
+
       padding: 28px;
+
       position: relative;
       overflow: hidden;
+
       background:
-        linear-gradient(to top, #000, transparent),
-        linear-gradient(135deg, #222, #090909);
-      border: 1px solid #222;
-    }
-
-    .collection:nth-child(2) {
-      background:
-        linear-gradient(to top, #000, transparent),
-        linear-gradient(135deg, #4a3910, #0b0b0b);
-    }
-
-    .collection:nth-child(3) {
-      background:
-        linear-gradient(to top, #000, transparent),
-        linear-gradient(135deg, #252525, #050505);
-    }
-
-    .collection h3 {
-      font-size: 28px;
-    }
-
-    .collection a {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--gold);
-      text-decoration: none;
-      font-size: 13px;
-      text-transform: uppercase;
-    }
-
-    /* PRODUCTS */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .product {
-      background: var(--card);
-      border: 1px solid #222;
-      overflow: hidden;
-    }
-
-    .product-image {
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #151515;
-      color: #555;
-      font-size: 15px;
-      letter-spacing: 2px;
-    }
-
-    .product-info {
-      padding: 20px;
-    }
-
-    .product-info h3 {
-      margin-bottom: 6px;
-    }
-
-    .product-info p {
-      color: var(--gold);
-      font-weight: bold;
-    }
-
-    .coming-soon {
-      color: #777 !important;
-      font-size: 13px;
-      margin-top: 5px;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      background:
-        radial-gradient(circle, rgba(212,175,55,0.12), transparent 50%),
-        #090909;
-    }
-
-    .cta h2 {
-      font-size: clamp(35px, 6vw, 65px);
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      color: #aaa;
-      margin-bottom: 30px;
-    }
-
-    /* CONTACT */
-    .contact-section {
-      background:
-        radial-gradient(circle at center, rgba(212,175,55,0.08), transparent 45%),
-        #080808;
-    }
-
-    .contact-details {
-      max-width: 950px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .contact-card {
-      background: var(--card);
-      border: 1px solid #222;
-      padding: 30px 20px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .contact-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-5px);
-    }
-
-    .contact-icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .contact-card h3 {
-      color: var(--gold);
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .contact-card p,
-    .contact-card a {
-      color: #bbb;
-      text-decoration: none;
-      font-size: 14px;
-      word-break: break-word;
-    }
-
-    .contact-card a:hover {
-      color: var(--gold);
-    }
-
-    /* FOOTER */
-    footer {
-      background: #050505;
-      border-top: 1px solid #222;
-      padding: 45px 20px 25px;
-    }
-
-    .footer-content {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .footer-brand h3 {
-      color: var(--gold);
-      letter-spacing: 2px;
-    }
-
-    .footer-brand p {
-      color: #777;
-      margin-top: 8px;
-    }
-
-    .footer-links a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-    }
-
-    .footer-links a:hover {
-      color: var(--gold);
-    }
-
-    .copyright {
-      max-width: 1100px;
-      margin: 35px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #1c1c1c;
-      color: #555;
-      font-size: 13px;
-      text-align: center;
-    }
-
-    /* MOBILE */
-    @media (max-width: 768px) {
-
-      .launch-announcement {
-        padding: 16px 15px;
-      }
-
-      .launch-label {
-        font-size: 8px;
-        letter-spacing: 2px;
-      }
-
-      .launch-announcement h2 {
-        font-size: 21px;
-        letter-spacing: 2px;
-      }
-
-      .launch-announcement p {
-        font-size: 12px;
-      }
-
-      .launch-date {
-        font-size: 9px;
-        letter-spacing: 2px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        background: #080808;
-        flex-direction: column;
-        padding: 25px;
-        text-align: center;
-        border-bottom: 1px solid #222;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .philosophy-grid,
-      .collection-grid,
-      .product-grid,
-      .contact-details {
-        grid-template-columns: 1fr;
-      }
-
-      .collection {
-        min-height: 250px;
-      }
-
-      .footer-content {
-        text-align: center;
-        justify-content: center;
-      }
-
-      .footer-links a {
-        margin: 0 8px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- =========================
-       LAUNCH ANNOUNCEMENT
-  ========================= -->
-
-  <div class="launch-announcement">
-
-    <div class="launch-label">
-      ✦ SOMETHING NEW IS ON THE WAY ✦
-    </div>
-
-    <h2>
-      ANJANEYA VENTURES
-    </h2>
-
-    <p>
-      A new Indian brand is taking shape.
-      Rooted in tradition, built for the modern generation.
-    </p>
-
-    <div class="launch-date">
-      COMING SOON
-    </div>
-
-    <span>
-      Stay tuned. The journey begins soon.
-    </span>
-
-  </div>
-
-
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-container">
-
-      <div class="logo">ANJANEYA VENTURES</div>
-
-      <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-    </div>
-  </nav>
-
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-
-      <div class="hero-small">
-        Indian Roots • Fearless Spirit
-      </div>
-
-      <h1>
-        ANJANEYA<br>
-        <span>VENTURES</span>
-      </h1>
-
-      <div class="hero-tagline">
-        WEAR YOUR STRENGTH.
-      </div>
-
-      <p>
-        Modern streetwear inspired by faith, courage, humility
-        and the fearless spirit of Anjaneya — Hanuman Ji.
-      </p>
-
-      <div class="buttons">
-        <a href="#shop" class="btn btn-primary">Explore Collection</a>
-        <a href="#story" class="btn btn-outline">Our Story</a>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- STORY -->
-  <section class="story" id="story">
-    <div class="container">
-
-      <div class="section-title">
-        <span>Our Story</span>
-        <h2>More Than Clothing.</h2>
-      </div>
-
-      <div class="story-content">
-
-        <p>
-          Anjaneya Ventures is more than a clothing brand.
-          It is a mindset inspired by <span class="highlight">Anjaneya</span> —
-          Hanuman Ji, whose strength was never separate from his humility,
-          whose courage came from his faith, and whose journey was defined
-          by one thing — never giving up.
-        </p>
-
-        <p>
-          We bring that timeless spirit into modern streetwear.
-          Our designs are created for a generation that respects its roots
-          but refuses to be limited by them.
-        </p>
-
-        <p>
-          <span class="highlight">Indian at heart. Modern by attitude. Fearless by nature.</span>
-        </p>
-
-        <p>
-          Every piece represents a part of the Anjaneya spirit:
-          strength to stand tall, courage to take your own path,
-          faith to keep going, and humility to stay grounded.
-        </p>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- PHILOSOPHY -->
-  <section>
-    <div class="container">
-
-      <div class="section-title">
-        <span>Our Philosophy</span>
-        <h2>The Anjaneya Spirit</h2>
-      </div>
-
-      <div class="philosophy-grid">
-
-        <div class="philosophy-card">
-          <div class="number">01</div>
-          <h3>Strength</h3>
-          <p>Strength to stand tall.</p>
-        </div>
-
-        <div class="philosophy-card">
-          <div class="number">02</div>
-          <h3>Courage</h3>
-          <p>Courage to take your own path.</p>
-        </div>
-
-        <div class="philosophy-card">
-          <div class="number">03</div>
-          <h3>Faith</h3>
-          <p>Faith to keep going.</p>
-        </div>
-
-        <div class="philosophy-card">
-          <div class="number">04</div>
-          <h3>Humility</h3>
-          <p>Humility to stay grounded.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- COLLECTIONS -->
-  <section class="collections" id="collections">
-    <div class="container">
-
-      <div class="section-title">
-        <span>Explore</span>
-        <h2>Collections</h2>
-      </div>
-
-      <div class="collection-grid">
-
-        <div class="collection">
-          <div>
-            <h3>Core Collection</h3>
-            <a href="#shop">Explore →</a>
-          </div>
-        </div>
-
-        <div class="collection">
-          <div>
-            <h3>Fearless</h3>
-            <a href="#shop">Explore →</a>
-          </div>
-        </div>
-
-        <div class="collection">
-          <div>
-            <h3>Indian Roots</h3>
-            <a href="#shop">Explore →</a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- SHOP -->
-  <section id="shop">
-    <div class="container">
-
-      <div class="section-title">
-        <span>Future Store</span>
-        <h2>Featured Pieces</h2>
-      </div>
-
-      <div class="product-grid">
-
-        <div class="product">
-          <div class="product-image">
-            PRODUCT IMAGE
-          </div>
-
-          <div class="product-info">
-            <h3>Strength Oversized Tee</h3>
-            <p>₹1,499</p>
-            <div class="coming-soon">
-              Online shopping coming soon
-            </div>
-          </div>
-        </div>
-
-        <div class="product">
-          <div class="product-image">
-            PRODUCT IMAGE
-          </div>
-
-          <div class="product-info">
-            <h3>Fearless Hoodie</h3>
-            <p>₹2,499</p>
-            <div class="coming-soon">
-              Online shopping coming soon
-            </div>
-          </div>
-        </div>
-
-        <div class="product">
-          <div class="product-image">
-            PRODUCT IMAGE
-          </div>
-
-          <div class="product-info">
-            <h3>Indian Roots Tee</h3>
-            <p>₹1,499</p>
-            <div class="coming-soon">
-              Online shopping coming soon
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-
-      <h2>WEAR YOUR STRENGTH.</h2>
-
-      <p>
-        Know your roots. Build your own path. Wear your strength.
-      </p>
-
-      <a href="#contact" class="btn btn-primary">
-        Join The Journey
-      </a>
-
-    </div>
-  </section>
-
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>
-          Connect
-        </span>
-
-        <h2>
-          Contact Us
-        </h2>
-
-      </div>
-
-
-      <div class="contact-details">
-
-        <!-- EMAIL -->
-        <div class="contact-card">
-
-          <div class="contact-icon">
-            📧
-          </div>
-
-          <h3>
-            Email
-          </h3>
-
-          <a href="mailto:niesbud.manish@gmail.com">
-            niesbud.manish@gmail.com
-          </a>
-
-        </div>
-
-
-        <!-- ADDRESS -->
-        <div class="contact-card">
-
-          <div class="contact-icon">
-            📍
-          </div>
-
-          <h3>
-            Address
-          </h3>
-
-          <p>
-            Noida, U. P. – 201309
-          </p>
-
-        </div>
-
-
-        <!-- INSTAGRAM -->
-        <div class="contact-card">
-
-          <div class="contact-icon">
-            📷
-          </div>
-
-          <h3>
-            Instagram
-          </h3>
-
-          <a
-            href="https://instagram.com/m.ravan_02"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            @m.ravan_02
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <div class="buttons">
-
-        <a
-          href="mailto:niesbud.manish@gmail.com"
-          class="btn btn-primary"
-        >
-          Email Us
-        </a>
-
-        <a
-          href="https://instagram.com/m.ravan_02"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-outline"
-        >
-          Follow Instagram
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-  <footer>
-
-    <div class="footer-content">
-
-      <div class="footer-brand">
-        <h3>ANJANEYA VENTURES</h3>
-        <p>Strength. Faith. Fearlessness.</p>
-      </div>
-
-      <div class="footer-links">
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#story">
-          Story
-        </a>
-
-        <a href="#collections">
-          Collections
-        </a>
-
-        <a href="#shop">
-          Shop
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-      </div>
-
-    </div>
-
-    <div class="copyright">
-      © 2026 Anjaneya Ventures. All Rights Reserved.
-    </div>
-
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
-  <script>
-
-    function toggleMenu() {
-
-      document
-        .getElementById("navLinks")
-        .classList
-        .toggle("active");
-
-    }
-
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-          document
-            .getElementById("navLinks")
-            .classList
-            .remove("active");
-
-        });
-
-      });
-
-  </script>
-
-
-  <!-- Firebase -->
-  <script type="module">
-
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-    import { getAuth }
-      from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-
-    const firebaseConfig = {
-
-      apiKey:
-        "AIzaSyCYakIx2ym0EdcdKRzjz9UPjXZG99-v4fc",
-
-      authDomain:
-        "anjaneya-ventures.firebaseapp.com",
-
-      projectId:
-        "anjaneya-ventures",
-
-      storageBucket:
-        "anjaneya-ventures.firebasestorage.app",
-
-      messagingSenderId:
-        "738196949428",
-
-      appId:
-        "1:738196949428:web:e65ad991a83cf754c34ae1"
-
-    };
-
-
-    const app =
-      initializeApp(firebaseConfig);
-
-    const auth =
-      getAuth(app);
-
-  </script>
-
-</body>
-</html>
+        linear-gradient(
+          to top,
+          #000,
+          transparent
+        ),
+        linear-gradient(
