@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Anjaneya Ventures | Wear Your Strength</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f0d77a;
+      --dark: #080808;
+      --card: #111;
+      --gray: #aaa;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #222;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-btn {
+      display: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+
+      background:
+        radial-gradient(circle at center, rgba(212,175,55,0.15), transparent 35%),
+        linear-gradient(135deg, #050505, #151515);
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-small {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 9vw, 110px);
+      line-height: 0.95;
+      letter-spacing: 4px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-size: clamp(20px, 3vw, 32px);
+      margin: 28px 0 15px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #bbb;
+      font-size: 17px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      border: 1px solid var(--gold);
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* GENERAL */
+    section {
+      padding: 90px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 13px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 55px);
+      margin-top: 8px;
+    }
+
+    /* STORY */
+    .story {
+      background: #0d0d0d;
+    }
+
+    .story-content {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .story-content p {
+      color: #bbb;
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    /* PHILOSOPHY */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .philosophy-card {
+      background: var(--card);
+      border: 1px solid #222;
+      padding: 35px 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .philosophy-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-7px);
+    }
+
+    .number {
+      color: var(--gold);
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .philosophy-card h3 {
+      margin: 15px 0 8px;
+    }
+
+    .philosophy-card p {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* COLLECTIONS */
+    .collections {
+      background: #0d0d0d;
+    }
+
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .collection {
+      min-height: 330px;
+      display: flex;
+      align-items: flex-end;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(to top, #000, transparent),
+        linear-gradient(135deg, #222, #090909);
+      border: 1px solid #222;
+    }
+
+    .collection:nth-child(2) {
+      background:
+        linear-gradient(to top, #000, transparent),
+        linear-gradient(135deg, #4a3910, #0b0b0b);
+    }
+
+    .collection:nth-child(3) {
+      background:
+        linear-gradient(to top, #000, transparent),
+        linear-gradient(135deg, #252525, #050505);
+    }
+
+    .collection h3 {
+      font-size: 28px;
+    }
+
+    .collection a {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    /* PRODUCTS */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      background: var(--card);
+      border: 1px solid #222;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #151515;
+      color: #555;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 6px;
+    }
+
+    .product-info p {
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .coming-soon {
+      color: #777 !important;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background:
+        radial-gradient(circle, rgba(212,175,55,0.12), transparent 50%),
+        #090909;
+    }
+
+    .cta h2 {
+      font-size: clamp(35px, 6vw, 65px);
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      border-top: 1px solid #222;
+      padding: 45px 20px 25px;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand h3 {
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .footer-brand p {
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #1c1c1c;
+      color: #555;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #080808;
+        flex-direction: column;
+        padding: 25px;
+        text-align: center;
+        border-bottom: 1px solid #222;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .philosophy-grid,
+      .collection-grid,
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .collection {
+        min-height: 250px;
+      }
+
+      .footer-content {
+        text-align: center;
+        justify-content: center;
+      }
+
+      .footer-links a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-container">
+
+      <div class="logo">ANJANEYA VENTURES</div>
+
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <div class="hero-small">
+        Indian Roots • Fearless Spirit
+      </div>
+
+      <h1>
+        ANJANEYA<br>
+        <span>VENTURES</span>
+      </h1>
+
+      <div class="hero-tagline">
+        WEAR YOUR STRENGTH.
+      </div>
+
+      <p>
+        Modern streetwear inspired by faith, courage, humility
+        and the fearless spirit of Anjaneya — Hanuman Ji.
+      </p>
+
+      <div class="buttons">
+        <a href="#shop" class="btn btn-primary">Explore Collection</a>
+        <a href="#story" class="btn btn-outline">Our Story</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Our Story</span>
+        <h2>More Than Clothing.</h2>
+      </div>
+
+      <div class="story-content">
+
+        <p>
+          Anjaneya Ventures is more than a clothing brand.
+          It is a mindset inspired by <span class="highlight">Anjaneya</span> —
+          Hanuman Ji, whose strength was never separate from his humility,
+          whose courage came from his faith, and whose journey was defined
+          by one thing — never giving up.
+        </p>
+
+        <p>
+          We bring that timeless spirit into modern streetwear.
+          Our designs are created for a generation that respects its roots
+          but refuses to be limited by them.
+        </p>
+
+        <p>
+          <span class="highlight">Indian at heart. Modern by attitude. Fearless by nature.</span>
+        </p>
+
+        <p>
+          Every piece represents a part of the Anjaneya spirit:
+          strength to stand tall, courage to take your own path,
+          faith to keep going, and humility to stay grounded.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PHILOSOPHY -->
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <span>Our Philosophy</span>
+        <h2>The Anjaneya Spirit</h2>
+      </div>
+
+      <div class="philosophy-grid">
+
+        <div class="philosophy-card">
+          <div class="number">01</div>
+          <h3>Strength</h3>
+          <p>Strength to stand tall.</p>
+        </div>
+
+        <div class="philosophy-card">
+          <div class="number">02</div>
+          <h3>Courage</h3>
+          <p>Courage to take your own path.</p>
+        </div>
+
+        <div class="philosophy-card">
+          <div class="number">03</div>
+          <h3>Faith</h3>
+          <p>Faith to keep going.</p>
+        </div>
+
+        <div class="philosophy-card">
+          <div class="number">04</div>
+          <h3>Humility</h3>
+          <p>Humility to stay grounded.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Explore</span>
+        <h2>Collections</h2>
+      </div>
+
+      <div class="collection-grid">
+
+        <div class="collection">
+          <div>
+            <h3>Core Collection</h3>
+            <a href="#shop">Explore →</a>
+          </div>
+        </div>
+
+        <div class="collection">
+          <div>
+            <h3>Fearless</h3>
+            <a href="#shop">Explore →</a>
+          </div>
+        </div>
+
+        <div class="collection">
+          <div>
+            <h3>Indian Roots</h3>
+            <a href="#shop">Explore →</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SHOP -->
+  <section id="shop">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Future Store</span>
+        <h2>Featured Pieces</h2>
+      </div>
+
+      <div class="product-grid">
+
+        <div class="product">
+          <div class="product-image">
+            PRODUCT IMAGE
+          </div>
+          <div class="product-info">
+            <h3>Strength Oversized Tee</h3>
+            <p>₹1,499</p>
+            <div class="coming-soon">Online shopping coming soon</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image">
+            PRODUCT IMAGE
+          </div>
+          <div class="product-info">
+            <h3>Fearless Hoodie</h3>
+            <p>₹2,499</p>
+            <div class="coming-soon">Online shopping coming soon</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image">
+            PRODUCT IMAGE
+          </div>
+          <div class="product-info">
+            <h3>Indian Roots Tee</h3>
+            <p>₹1,499</p>
+            <div class="coming-soon">Online shopping coming soon</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+
+      <h2>WEAR YOUR STRENGTH.</h2>
+
+      <p>
+        Know your roots. Build your own path. Wear your strength.
+      </p>
+
+      <a href="#contact" class="btn btn-primary">
+        Join The Journey
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Connect</span>
+        <h2>Anjaneya Ventures</h2>
+      </div>
+
+      <div class="story-content">
+
+        <p>
+          The journey has just begun.
+        </p>
+
+        <p>
+          For collaborations, enquiries and future collections,
+          connect with us.
+        </p>
+
+        <div class="buttons">
+          <a href="mailto:hello@anjaneyaventures.com"
+             class="btn btn-primary">
+            Email Us
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-content">
+
+      <div class="footer-brand">
+        <h3>ANJANEYA VENTURES</h3>
+        <p>Strength. Faith. Fearlessness.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#story">Story</a>
+        <a href="#collections">Collections</a>
+        <a href="#shop">Shop</a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Anjaneya Ventures. All Rights Reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("navLinks").classList.remove("active");
+      });
+    });
+  </script>
+
+</body>
+</html>
